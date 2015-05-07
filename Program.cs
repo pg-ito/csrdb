@@ -34,6 +34,13 @@ namespace csrdb
 			var relation1 = new CSVRelationalStream(csv1);
 			var relation2 = new SelectionStream(relation1, "age", Operators.GreaterThan, 20);
 			Print(relation2);
+
+			Console.WriteLine("<hr>");
+			Console.WriteLine("<p>SELECT * FROM Staff, Rank WHERE staff.name = rank.name</p>");
+			var in1 = new CSVRelationalStream(csv1);
+			var in2 = new CSVRelationalStream(csv2);
+			var in3 = new JoinStream(in1, "name", in2, "name", Operators.Equal);
+			Print(in3);
 		}
 
 		public static void Print(IStream st){
