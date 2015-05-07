@@ -57,6 +57,9 @@ namespace csrdb
 					result.Add(col.Key,col.Value);
 				}
 				foreach (KeyValuePair<string, string> col in targetTuple) {
+					if (result.ContainsKey (col.Key)) {
+						continue;
+					}
 					result.Add(col.Key,col.Value);
 				}
 				return result;
@@ -69,8 +72,7 @@ namespace csrdb
 		}
 
 		public bool HasNext(){
-			if (this.tuples == null) {
-				this.tuples = new List<Dictionary<string,string>>();
+			if (this.tuples.Count<1) {
 				while (this.inputJoin.HasNext()) {
 					this.tuples.Add(this.inputJoin.Next());
 				}
