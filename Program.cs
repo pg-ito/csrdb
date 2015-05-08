@@ -52,8 +52,6 @@ namespace csrdb
 					Console.WriteLine ( string.Join(",",header));
 					isFirstLine = false;
 				}
-				// string[] tmp = new string[tuple.Count];
-				// tuple.Values.CopyTo(tmp, 0);
 				string[] tmp = new List<string> (tuple.Values).ToArray ();
 				Console.WriteLine ( string.Join(",",tmp));
 			}
