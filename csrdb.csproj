@@ -43,6 +43,8 @@
     <Compile Include="BaseStream.cs" />
     <Compile Include="Operators.cs" />
     <Compile Include="JoinStream.cs" />
+    <Compile Include="CrossJoinStream.cs" />
+    <Compile Include="RenameStream.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
