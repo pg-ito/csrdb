@@ -44,10 +44,17 @@ namespace csrdb
 		}
 
 		public static void Print(IStream st){
+			bool isFirstLine = true;
 			while(st.HasNext()){
 				Dictionary<string,string> tuple = st.Next();
-				string[] tmp = new string[tuple.Count];
-				tuple.Values.CopyTo(tmp, 0);
+				if (isFirstLine) {
+					string[] header = new List<string>( tuple.Keys).ToArray();
+					Console.WriteLine ( string.Join(",",header));
+					isFirstLine = false;
+				}
+				// string[] tmp = new string[tuple.Count];
+				// tuple.Values.CopyTo(tmp, 0);
+				string[] tmp = new List<string> (tuple.Values).ToArray ();
 				Console.WriteLine ( string.Join(",",tmp));
 			}
 		}
